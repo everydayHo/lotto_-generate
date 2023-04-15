@@ -1,0 +1,224 @@
+@import 'reset.css';
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');
+
+/* --------- common --------- */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-family: 'Pretendard Variable', Pretendard, -apple-system,
+		BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+		'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+	color: #333333;
+	background: #fbf9f0;
+}
+
+button {
+	outline: none;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+header h1 {
+	width: 100%;
+	height: 80px;
+	font-size: 25px;
+	font-weight: 600;
+	position: relative;
+	text-align: center;
+	background-image: linear-gradient(
+		to top,
+		#f3e7e9 0%,
+		#e3eeff 99%,
+		#e3eeff 100%
+	);
+	line-height: 80px;
+}
+
+.custom-shape-divider-top-1681472748 {
+	position: relative;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.custom-shape-divider-top-1681472748 svg {
+	position: relative;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 94px;
+	transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1681472748 .shape-fill {
+	fill: #f3e7e9;
+}
+
+main {
+	position: relative;
+	margin: 0 auto;
+}
+section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+section > div {
+	width: 90%;
+	border: 1px solid #333333;
+	border-radius: 15px;
+	margin-bottom: 30px;
+	background: #fffff9;
+	position: relative;
+	padding: 20px;
+}
+
+section > div::before {
+	content: '';
+	display: block;
+	background-color: #dcd9d4;
+	background-image: linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 0.5) 0%,
+			rgba(0, 0, 0, 0.5) 100%
+		),
+		radial-gradient(
+			at 50% 0%,
+			rgba(255, 255, 255, 0.1) 0%,
+			rgba(0, 0, 0, 0.5) 50%
+		);
+	background-blend-mode: soft-light, screen;
+	height: 60px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	border-radius: 15px 15px 0 0;
+}
+section > div h2 {
+	position: relative;
+	font-size: 20px;
+	font-weight: 500;
+	z-index: 100;
+}
+.wrapper {
+	padding: 30px;
+}
+.ball {
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	border: 1px solid #333333;
+	border-radius: 50%;
+	margin-left: 10px;
+	text-align: center;
+	line-height: 80px;
+}
+
+section > div .btn {
+	position: absolute;
+	top: 9px;
+	left: 80px;
+	padding: 10px 30px;
+	font-size: 18px;
+	border-radius: 40px;
+	background: #fb81d2;
+	transition: 300ms;
+	z-index: 100;
+}
+.btn:hover {
+	background: #e13daa;
+	color: #e3e3e2;
+}
+
+section > div .refreshBtn {
+	background: #00754b;
+}
+.refreshBtn:hover {
+	background: #013f28;
+	color: #e3e3e2;
+}
+
+.overlay {
+	position: fixed;
+	display: block;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(5px);
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.3s;
+}
+.overlay.visible {
+	opacity: 1;
+	visibility: visible;
+}
+.overlay .inner {
+	position: absolute;
+	border: 1px solid #2f4858;
+	border-radius: 30px;
+	width: 950px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	padding: 30px;
+	z-index: 1000;
+	background: #e3e3e2;
+}
+
+.overlay .wrapper .ball {
+	margin: 8px;
+	cursor: pointer;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+}
+.overlay .inner .close {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.overlay .inner .close .fa-circle-xmark {
+	width: 100%;
+	height: 100%;
+	color: #333333;
+	transition: 0.3s;
+}
+.overlay .inner .close .fa-circle-xmark:hover {
+	color: #fb81d2;
+}
+
+.overlay .btn {
+	position: absolute;
+	right: 40px;
+	bottom: 10px;
+	width: 100px;
+	height: 40px;
+	font-size: 20px;
+	border-radius: 40px;
+	background: #ffd22d;
+	transition: 300ms;
+}
+
+.overlay .btn:hover {
+	background: #fecc18;
+	color: #e3e3e2;
+}
