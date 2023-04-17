@@ -163,6 +163,7 @@ section > div .refreshBtn {
 	opacity: 0;
 	visibility: hidden;
 	transition: 0.3s;
+	z-index: 9999;
 }
 .overlay.visible {
 	opacity: 1;
@@ -189,20 +190,20 @@ section > div .refreshBtn {
 	line-height: 60px;
 }
 .overlay .inner .close {
-	width: 40px;
-	height: 40px;
+	width: 60px;
+	height: 60px;
 	position: absolute;
 	right: 10px;
 	top: 10px;
 }
 
-.overlay .inner .close .fa-circle-xmark {
-	width: 100%;
-	height: 100%;
+.overlay .inner .close i {
+	font-size: 30px;
 	color: #333333;
 	transition: 0.3s;
 }
-.overlay .inner .close .fa-circle-xmark:hover {
+
+.overlay .inner .close i:hover {
 	color: #fb81d2;
 }
 
@@ -221,4 +222,9 @@ section > div .refreshBtn {
 .overlay .btn:hover {
 	background: #fecc18;
 	color: #e3e3e2;
+}
+
+.overlay .wrapper .ball:hover {
+	box-sizing: border-box;
+	border: 1px solid #00c6cf;
 }

@@ -13,63 +13,45 @@ function createItem(number) {
 	return itemrow;
 }
 
-for (let i = 1; i < 46; i++) {
+for (let i = 1; i <= 45; i++) {
 	let itemBall = createItem(i);
 	overlayContainer.appendChild(itemBall);
 }
-const fixballs = document.querySelectorAll('.overlay .inner .wrapper .ball');
+
+closeBtn.addEventListener('click', () => {
+	popup.classList.remove('visible');
+});
+
+fixballBtn.addEventListener('click', () => {
+	popup.classList.toggle('visible');
+});
+
+choiceBtn.addEventListener('click', () => {
+	popup.classList.toggle('visible');
+});
 
 // 선택한 숫자들
-// 선택힌 숫자들이거나 선택을 안했을 때 전체로 숫자가 나오게 만듬
+// 선택한 숫자들이거나 선택을 안했을 때 전체로 숫자가 나오게 만듦
 let otherNumbers = [];
-let selectedNumbers = [];
 function clickNumber(e) {
+	let selectedNumbers = [4, 16, 24];
 	if (e.target.classList.contains('ball')) {
 		let selectedNumber = parseInt(e.target.innerText);
-		if (otherNumbers.indexOf(selectedNumber) === -1) {
+		if (
+			selectedNumbers.indexOf(selectedNumber) === -1 &&
+			otherNumbers.indexOf(selectedNumber) === -1
+		) {
 			e.target.style.backgroundColor = '#00c6cf';
 			otherNumbers.push(selectedNumber);
+			console.log('넘어오는 값1:', otherNumbers);
+			generateLottoNumbers(selectedNumbers, otherNumbers);
+			popupSubmitBtn.addEventListener('click', () => {
+				getResult(selectedNumbers, otherNumbers);
+			});
 		}
 	}
-	console.log('넘어오는 값1:', otherNumbers);
-	generateOtherLottoNumbers(otherNumbers);
 }
-function clickNumber2(e) {
-	console.log('2:', e);
-	if (e.target.classList.contains('ball')) {
-		let selectedNumber = parseInt(e.target.innerText);
-		e.target.style.backgroundColor = '#ff2c56';
-		selectedNumbers.push(selectedNumber);
-		console.log('넘어오는 값1:', selectedNumbers);
-	}
-	generateLottoNumbers(selectedNumbers);
-}
-
-function getFixball(e) {
-	popup.classList.toggle('visible');
-	overlayContainer.addEventListener('click', clickNumber);
-}
-
-function getSelectball(e) {
-	popup.classList.toggle('visible');
-	overlayContainer.addEventListener('click', clickNumber2);
-}
-function generateLuckNumber() {
-	fixballBtn.addEventListener('click', getFixball);
-	console.log('아더:', otherNumbers);
-	choiceBtn.addEventListener('click', getSelectball);
-	closeBtn.addEventListener('click', () => {
-		popup.classList.remove('visible');
-	});
-	popupSubmitBtn.addEventListener('click', () => {
-		let allNumbers = generateLottoNumbers(selectedNumbers, otherNumbers);
-		for (let i = 0; i < allNumbers.length; i++) {
-			console.log(
-				i + 1 + '번째: ' + allNumbers[i].sort((a, b) => a - b).join(', ')
-			);
-		}
-	});
-}
+overlayContainer.addEventListener('click', clickNumber);
 
 function generateLottoNumbers(selectedNumbers, otherNumbers) {
 	let allNumbers = [];
@@ -83,15 +65,16 @@ function generateLottoNumbers(selectedNumbers, otherNumbers) {
 		}
 		allNumbers.push(otherLottoNumbers);
 	}
-	return allNumbers;
+
+	getResult(selectedNumbers, otherNumbers, allNumbers);
+
 	// 선택한 숫자들만으로 로또 번호 조합 생성
 }
 
 function generateOtherLottoNumbers(otherNumbers) {
-	console.log('안:', otherNumbers);
 	let lottoNumbers = [];
 	console.log('넘어오는 값2:', otherNumbers);
-	if (otherNumbers.length > 6) {
+	if (otherNumbers.length > 0) {
 		while (lottoNumbers.length < 6) {
 			let random =
 				otherNumbers[Math.floor(Math.random() * otherNumbers.length)];
@@ -103,4 +86,12 @@ function generateOtherLottoNumbers(otherNumbers) {
 	return lottoNumbers;
 }
 
-generateLuckNumber();
+function getResult(selectedNumbers, otherNumbers, allNumbers) {
+	console.log('내가 선택한 숫자를 고정하고 조합한 모든 로또 번호:');
+	// 생성된 모든 로또 번호 출력
+	for (let i = 0; i < allNumbers.length; i++) {
+		console.log(
+			i + 1 + '번째: ' + allNumbers[i].sort((a, b) => a - b).join(', ')
+		);
+	}
+}
