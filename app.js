@@ -5,6 +5,7 @@ const overlayContainer = document.querySelector('.overlay .inner .wrapper');
 const closeBtn = document.querySelector('.overlay .inner .close');
 const fixballBtn = document.querySelector('.fixball_container .btn');
 const choiceBtn = document.querySelector('.choice_container .btn');
+const fixballContainer = document.querySelector('.fixball_container .wrapper');
 
 // 팝업창 공 나오게 만듬
 function createItem(number) {
@@ -29,6 +30,9 @@ function getFixball(e) {
 	popup.classList.toggle('visible');
 	if (clickNumber2) {
 		overlayContainer.removeEventListener('click', clickNumber2);
+		popupSubmitBtn.removeEventListener('click', () => {
+			console.log('넘어오는 값2:', otherNumbers);
+		});
 	}
 	overlayContainer.addEventListener('click', clickNumber);
 }
@@ -38,6 +42,7 @@ function getSelectball(e) {
 	popup.classList.toggle('visible');
 	if (clickNumber) {
 		overlayContainer.removeEventListener('click', clickNumber);
+		popupSubmitBtn.removeeventListener('click', fixballSubmitHandler);
 	}
 	overlayContainer.addEventListener('click', clickNumber2);
 }
@@ -49,11 +54,15 @@ function clickNumber(e) {
 			selectedNumbers.push(selectedNumber);
 		}
 	}
-	popupSubmitBtn.addEventListener('click', () => {
-		console.log('넘어오는 값1:', selectedNumbers);
-	});
+	popupSubmitBtn.addEventListener('click', fixballSubmitHandler);
 }
 
+const fixballSubmitHandler = () => {
+	selectedNumbers.forEach((el) => {
+		let fixBalls = createItem(el);
+		console.log(fixBalls);
+	});
+};
 function clickNumber2(e) {
 	if (e.target.classList.contains('ball')) {
 		let otherNumber = parseInt(e.target.innerText);
@@ -62,6 +71,7 @@ function clickNumber2(e) {
 			otherNumbers.push(otherNumber);
 		}
 	}
+
 	popupSubmitBtn.addEventListener('click', () => {
 		console.log('넘어오는 값2:', otherNumbers);
 	});
@@ -72,8 +82,6 @@ fixballBtn.addEventListener('click', getFixball);
 choiceBtn.addEventListener('click', getSelectball);
 
 popupSubmitBtn.addEventListener('click', () => {
-	selectedNumbers = [3, 24];
-	otherNumbers = [13, 25, 22, 10, 32, 35, 40, 41];
 	generateLottoNumbers(selectedNumbers, otherNumbers);
 	for (let i = 0; i < uniqueNumbers.length; i++) {
 		console.log(i + 1 + '번째: ' + uniqueNumbers[i].join(', '));
@@ -87,7 +95,11 @@ closeBtn.addEventListener('click', () => {
 // 고정수와 선택수를 받아서 로또 번호 생성한 다음 정렬
 function generateLottoNumbers(selectedNumbers, otherNumbers) {
 	let allNumbers = [];
-	for (let i = 0; i < 100; i++) {
+
+	let val = selectedNumbers.length;
+	console.log('val: ', val);
+
+	for (let i = 0; i < caseInSwitch(val); i++) {
 		let otherLottoNumbers = generateOtherLottoNumbers(otherNumbers);
 		console.log('안:', otherLottoNumbers);
 		let lottoNumbers = selectedNumbers.slice();
@@ -162,4 +174,44 @@ function generateOtherLottoNumbers(otherNumbers) {
 		}
 	}
 	return lottoNumbers;
+}
+
+// 로또 나오는 횟수
+function caseInSwitch(val) {
+	let resultLength = '';
+	switch (val) {
+		case 1:
+			resultLength = 150;
+			break;
+		case 2:
+			resultLength = 250;
+			break;
+		case 3:
+			resultLength = 1000;
+			break;
+		case 4:
+			resultLength = 2000;
+			break;
+	}
+	return resultLength;
+}
+
+// 로또번호 고정수, 선택수 색상
+function caseInSwitch(ballNumber) {
+	var className = '';
+	switch (ballNumber) {
+		case ballNumber < 11:
+			className = 'yellowball';
+			break;
+		case ballNumber < 21:
+			className = 'redball';
+			break;
+		case ballNumber < 31:
+			className = 'grayball';
+			break;
+		case ballNumber < 46:
+			className = 'greenball';
+			break;
+	}
+	return className;
 }

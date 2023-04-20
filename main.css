@@ -81,7 +81,7 @@ section > div {
 	margin-bottom: 30px;
 	background: #fffff9;
 	position: relative;
-	padding: 20px;
+	padding: 20px 20px 10px 20px;
 }
 
 section > div::before {
@@ -114,17 +114,17 @@ section > div h2 {
 	z-index: 100;
 }
 .wrapper {
-	padding: 30px;
+	padding: 30px 30px 10px 30px;
 }
 .ball {
 	display: inline-block;
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	border: 1px solid #333333;
 	border-radius: 50%;
 	margin-left: 10px;
 	text-align: center;
-	line-height: 80px;
+	line-height: 60px;
 }
 
 section > div .btn {
@@ -143,7 +143,18 @@ section > div .btn {
 	color: #e3e3e2;
 }
 
+.generate_container .makebtn {
+	background: #ff7fa7;
+}
+.generate_container .makebtn:hover {
+	background: #ed1459;
+}
+
 section > div .refreshBtn {
+	position: absolute;
+	white-space: nowrap;
+	top: 9px;
+	left: 240px;
 	background: #00754b;
 }
 .refreshBtn:hover {
@@ -227,4 +238,19 @@ section > div .refreshBtn {
 .overlay .wrapper .ball:hover {
 	box-sizing: border-box;
 	border: 1px solid #00c6cf;
+}
+
+.yellowball {
+	border-color: #fac400;
+}
+
+.redball {
+	border-color: #ff7171;
+}
+.grayball {
+	border-color: #aaaaaa;
+}
+
+.greenball {
+	border-color: #b0d840;
 }
