@@ -169,7 +169,7 @@ closeBtn.addEventListener('click', () => {
 const makeLuckyball = () => {
 	generateContainer.innerHTML = '';
 
-	if (generateArea === null) {
+	if (generateArea === null && otherNumbers.length > 0) {
 		console.log('안안안:', generateArea);
 		loadingContainer.classList.add('show');
 	}
