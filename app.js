@@ -12,6 +12,8 @@ const selectballContainer = document.querySelector(
 const generateContainer = document.querySelector(
 	'.generate_container .wrapper'
 );
+const generateArea = document.querySelector('.generate_container .wrapper p');
+console.log('로또안:', generateArea);
 const generateBtn = document.querySelector('.generate_container .makebtn');
 const regenerateBtn = document.querySelector('.generate_container .refreshbtn');
 const loadingContainer = document.querySelector(
@@ -166,11 +168,12 @@ closeBtn.addEventListener('click', () => {
 
 const makeLuckyball = () => {
 	generateContainer.innerHTML = '';
-	if (!generateContainer.hasChildNodes()) {
+
+	if (generateArea === null) {
+		console.log('안안안:', generateArea);
 		loadingContainer.classList.add('show');
-	} else {
-		loadingContainer.classList.remove('show');
 	}
+
 	if (otherNumbers.length > 5) {
 		generateLottoNumbers(selectedNumbers, otherNumbers);
 		console.log('유니큐:', uniqueNumbers);
@@ -186,6 +189,7 @@ const makeLuckyball = () => {
 			}
 			generateContainer.append(item);
 		}
+		loadingContainer.classList.remove('show');
 	}
 };
 generateBtn.addEventListener('click', makeLuckyball);
