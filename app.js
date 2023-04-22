@@ -50,18 +50,36 @@ function clickNumber(e) {
 	if (e.target.classList.contains('ball')) {
 		let selectedNumber = parseInt(e.target.innerText);
 		if (selectedNumbers.indexOf(selectedNumber) === -1) {
-			e.target.style.backgroundColor = '#ff2c56';
+			e.target.classList.toggle('fixballs');
 			selectedNumbers.push(selectedNumber);
+		} else {
+			const index = selectedNumbers.indexOf(selectedNumber);
+			selectedNumbers.splice(index, 1);
+			e.target.classList.toggle('fixballs');
+		}
+		if (selectedNumbers.length > 5) {
+			Swal.fire({
+				icon: 'error',
+				title: '욕심쟁이',
+				text: '고정수는 5개 이하까지 선택하세요.',
+			});
 		}
 	}
+	// 로컬히스토리 저장해야됨
+	console.log(selectedNumbers);
+
 	popupSubmitBtn.addEventListener('click', fixballSubmitHandler);
 }
 
 const fixballSubmitHandler = () => {
-	selectedNumbers.forEach((el) => {
-		let fixBalls = createItem(el);
-		console.log(fixBalls);
-	});
+	selectedNumbers
+		.sort((a, b) => a - b)
+		.forEach((el) => {
+			let fixBalls = createItem(el);
+			fixBalls.classList.add(colorClass(el));
+			fixballContainer.appendChild(fixBalls);
+			popup.classList.remove('visible');
+		});
 };
 function clickNumber2(e) {
 	if (e.target.classList.contains('ball')) {
@@ -81,27 +99,26 @@ fixballBtn.addEventListener('click', getFixball);
 
 choiceBtn.addEventListener('click', getSelectball);
 
-popupSubmitBtn.addEventListener('click', () => {
-	generateLottoNumbers(selectedNumbers, otherNumbers);
-	for (let i = 0; i < uniqueNumbers.length; i++) {
-		console.log(i + 1 + '번째: ' + uniqueNumbers[i].join(', '));
-	}
-});
-
 closeBtn.addEventListener('click', () => {
 	popup.classList.remove('visible');
 });
 
+// otherNumbers = [15, 20, 25, 45, 31, 33, 36, 40, 16, 29];
+// generateLottoNumbers(selectedNumbers, otherNumbers);
+// for (let i = 0; i < uniqueNumbers.length; i++) {
+// 	console.log(i + 1 + '번째: ' + uniqueNumbers[i].join(', '));
+// }
 // 고정수와 선택수를 받아서 로또 번호 생성한 다음 정렬
 function generateLottoNumbers(selectedNumbers, otherNumbers) {
 	let allNumbers = [];
-
 	let val = selectedNumbers.length;
 	console.log('val: ', val);
+	let numberTime = val > 0 ? caseNumber(val) : 500;
 
-	for (let i = 0; i < caseInSwitch(val); i++) {
+	for (let i = 0; i < numberTime; i++) {
 		let otherLottoNumbers = generateOtherLottoNumbers(otherNumbers);
 		console.log('안:', otherLottoNumbers);
+
 		let lottoNumbers = selectedNumbers.slice();
 		if (lottoNumbers.length > 0) {
 			for (let j = 0; j < lottoNumbers.length; j++) {
@@ -125,16 +142,19 @@ function generateLottoNumbers(selectedNumbers, otherNumbers) {
 				if (allNumbers[i][k] === allNumbers[j][k]) {
 					if (allNumbers[i][k + 1] < allNumbers[j][k + 1]) {
 						temp.push(allNumbers[i]);
+
 						smaller = true;
 						break;
 					}
 				} else if (allNumbers[i][k] < allNumbers[j][k]) {
 					temp.push(allNumbers[i]);
 					smaller = true;
+
 					break;
 				} else if (allNumbers[i][k] > allNumbers[j][k]) {
 					temp.push(allNumbers[j]);
 					smaller = false;
+
 					break;
 				}
 			}
@@ -157,49 +177,49 @@ function generateLottoNumbers(selectedNumbers, otherNumbers) {
 			a[4] - b[4] ||
 			a[5] - b[5]
 	);
-
+	console.log(uniqueNumbers);
 	return uniqueNumbers;
 }
 
 // 선택수를 랜덤으로 만듬
 function generateOtherLottoNumbers(otherNumbers) {
 	let lottoNumbers = [];
-	if (otherNumbers.length > 6) {
-		while (lottoNumbers.length < 6) {
-			let random =
-				otherNumbers[Math.floor(Math.random() * otherNumbers.length)];
-			if (lottoNumbers.indexOf(random) === -1) {
-				lottoNumbers.push(random);
-			}
+
+	while (lottoNumbers.length < 6) {
+		let random = otherNumbers[Math.floor(Math.random() * otherNumbers.length)];
+		if (lottoNumbers.indexOf(random) === -1) {
+			lottoNumbers.push(random);
 		}
 	}
+
 	return lottoNumbers;
 }
 
 // 로또 나오는 횟수
-function caseInSwitch(val) {
+function caseNumber(val) {
 	let resultLength = '';
 	switch (val) {
 		case 1:
-			resultLength = 150;
+			resultLength = 1500;
 			break;
 		case 2:
-			resultLength = 250;
-			break;
-		case 3:
 			resultLength = 1000;
 			break;
+		case 3:
+			resultLength = 600;
+			break;
 		case 4:
-			resultLength = 2000;
+			resultLength = 200;
 			break;
 	}
 	return resultLength;
 }
 
 // 로또번호 고정수, 선택수 색상
-function caseInSwitch(ballNumber) {
+
+function colorClass(ballNumber) {
 	var className = '';
-	switch (ballNumber) {
+	switch (true) {
 		case ballNumber < 11:
 			className = 'yellowball';
 			break;
