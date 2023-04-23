@@ -493,17 +493,17 @@ main .back_to_top.active {
 	.generate_container .wrapper p {
 		display: flex;
 		font-size: 12px;
-		line-height: 32px;
+		line-height: 25px;
 	}
 
 	.generate_container .wrapper p .ball {
-		width: 32px;
-		height: 32px;
-		line-height: 32px;
-		margin-left: 6px;
+		width: 25px;
+		height: 25px;
+		line-height: 25px;
+		margin-left: 4px;
 	}
 	.generate_container .wrapper p .oddnum {
-		line-height: 32px;
+		line-height: 25px;
 	}
 	.generate_container::before {
 		height: 120px;
