@@ -13,7 +13,6 @@ const generateContainer = document.querySelector(
 	'.generate_container .wrapper'
 );
 const generateArea = document.querySelector('.generate_container .wrapper p');
-console.log('로또안:', generateArea);
 const generateBtn = document.querySelector('.generate_container .makebtn');
 const regenerateBtn = document.querySelector('.generate_container .refreshbtn');
 const loadingContainer = document.querySelector(
@@ -92,7 +91,6 @@ function clickNumber(e) {
 	}
 
 	// 로컬히스토리 저장해야됨
-	console.log(selectedNumbers);
 
 	popupSubmitBtn.addEventListener('click', fixballSubmitHandler);
 }
@@ -131,8 +129,6 @@ function clickSelectNumber(e) {
 				text: '고정수 수정은 고정수 지정에서 하세요.',
 			});
 		}
-
-		console.log('셀렉트:', otherNumbers);
 	}
 
 	popupSubmitBtn.addEventListener('click', selectballSubmitHandler);
@@ -144,7 +140,7 @@ const selectballSubmitHandler = () => {
 		Swal.fire({
 			icon: 'error',
 			title: '선택수가 작아요',
-			text: '고정수없이는 선택수가 5개 이상이여야합니다.',
+			text: '선택수가 5개 이상이여야합니다.',
 		});
 	} else {
 		otherNumbers
@@ -170,23 +166,32 @@ const makeLuckyball = () => {
 	generateContainer.innerHTML = '';
 
 	if (generateArea === null && otherNumbers.length > 0) {
-		console.log('안안안:', generateArea);
 		loadingContainer.classList.add('show');
 	}
 
 	if (otherNumbers.length > 5) {
 		generateLottoNumbers(selectedNumbers, otherNumbers);
-		console.log('유니큐:', uniqueNumbers);
 		for (let i = 0; i < uniqueNumbers.length; i++) {
 			const item = document.createElement('p');
+			const itemNumText = document.createElement('span');
+			let odd = 0;
+			let even = 0;
 			item.innerHTML = `<span>${i + 1}번째</span>`;
 			for (let j = 0; j < 6; j++) {
 				const itemIdx = document.createElement('span');
 				itemIdx.setAttribute('class', 'ball');
 				itemIdx.innerText = uniqueNumbers[i][j];
 				itemIdx.classList.add(colorClass(itemIdx.innerText));
+
+				if (uniqueNumbers[i][j] % 2 === 1) {
+					odd += 1;
+				} else even += 1;
+				let itemNum = `홀짝 ${odd}:${even}`;
+				itemNumText.setAttribute('class', 'oddnum');
+				itemNumText.innerText = itemNum;
 				item.append(itemIdx);
 			}
+			item.append(itemNumText);
 			generateContainer.append(item);
 		}
 		loadingContainer.classList.remove('show');
@@ -207,7 +212,6 @@ regenerateBtn.addEventListener('click', () => {
 		otherNumbers = [];
 		const popupBalls = popup.querySelectorAll('span');
 		popupBalls.forEach((el) => {
-			console.log(el);
 			el.classList.remove('fixballs');
 			el.classList.remove('selectballs');
 		});
@@ -222,7 +226,6 @@ function generateLottoNumbers(selectedNumbers, otherNumbers) {
 
 	for (let i = 0; i < numberTime; i++) {
 		let otherLottoNumbers = generateOtherLottoNumbers(otherNumbers);
-		console.log('안:', otherLottoNumbers);
 
 		let lottoNumbers = selectedNumbers.slice();
 		if (lottoNumbers.length > 0) {
@@ -237,7 +240,7 @@ function generateLottoNumbers(selectedNumbers, otherNumbers) {
 	allNumbers.forEach((el) => {
 		el.sort((a, b) => a - b);
 	});
-	console.log('allNumbers: ', allNumbers);
+
 	// allNumbers 2차원배열 정렬
 	let temp = [];
 	for (let i = 0; i < allNumbers.length; i++) {
@@ -270,7 +273,7 @@ function generateLottoNumbers(selectedNumbers, otherNumbers) {
 			}
 		}
 	}
-	console.log(temp);
+
 	// 중복요소 제거
 	uniqueNumbers = [...new Set(temp.map(JSON.stringify))].map(JSON.parse);
 	uniqueNumbers.sort(
@@ -282,7 +285,7 @@ function generateLottoNumbers(selectedNumbers, otherNumbers) {
 			a[4] - b[4] ||
 			a[5] - b[5]
 	);
-	console.log('안유니큐:', uniqueNumbers);
+
 	return uniqueNumbers;
 }
 
@@ -343,3 +346,20 @@ function colorClass(ballNumber) {
 	}
 	return className;
 }
+
+// 화살표 위로 올라가기
+
+const arrow = document.querySelector('main .back_to_top');
+
+window.addEventListener('scroll', () => {
+	if (window.scrollY > 1000) {
+		arrow.classList.add('active');
+	} else {
+		arrow.classList.remove('active');
+	}
+});
+
+arrow.addEventListener('click', (e) => {
+	e.preventDefault();
+	document.body.scrollIntoView({ behavior: 'smooth' });
+});
