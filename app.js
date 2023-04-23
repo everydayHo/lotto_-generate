@@ -204,17 +204,19 @@ regenerateBtn.addEventListener('click', () => {
 		'초기화할까요?',
 		'OK버튼을 클릭하시면 초기화됩니다.',
 		'question'
-	).then(function () {
-		generateContainer.innerHTML = '';
-		selectballContainer.innerHTML = '';
-		fixballContainer.innerHTML = '';
-		selectedNumbers = [];
-		otherNumbers = [];
-		const popupBalls = popup.querySelectorAll('span');
-		popupBalls.forEach((el) => {
-			el.classList.remove('fixballs');
-			el.classList.remove('selectballs');
-		});
+	).then(function (result) {
+		if (result.isConfirmed) {
+			generateContainer.innerHTML = '';
+			selectballContainer.innerHTML = '';
+			fixballContainer.innerHTML = '';
+			selectedNumbers = [];
+			otherNumbers = [];
+			const popupBalls = popup.querySelectorAll('span');
+			popupBalls.forEach((el) => {
+				el.classList.remove('fixballs');
+				el.classList.remove('selectballs');
+			});
+		}
 	});
 });
 
