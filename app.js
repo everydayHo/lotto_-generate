@@ -140,7 +140,7 @@ const selectballSubmitHandler = () => {
 		Swal.fire({
 			icon: 'error',
 			title: '선택수가 작아요',
-			text: '선택수가 5개 이상이여야합니다.',
+			text: '선택수가 6개 이상이여야합니다.',
 		});
 	} else {
 		otherNumbers
@@ -164,11 +164,7 @@ closeBtn.addEventListener('click', () => {
 
 const makeLuckyball = () => {
 	generateContainer.innerHTML = '';
-
-	if (generateArea === null && otherNumbers.length > 0) {
-		loadingContainer.classList.add('show');
-	}
-
+	loadingContainer.classList.add('show');
 	if (otherNumbers.length > 5) {
 		generateLottoNumbers(selectedNumbers, otherNumbers);
 		for (let i = 0; i < uniqueNumbers.length; i++) {
@@ -194,7 +190,9 @@ const makeLuckyball = () => {
 			item.append(itemNumText);
 			generateContainer.append(item);
 		}
-		loadingContainer.classList.remove('show');
+		if (generateContainer.childNodes.length > 0) {
+			loadingContainer.classList.remove('show');
+		}
 	}
 };
 generateBtn.addEventListener('click', makeLuckyball);
