@@ -224,7 +224,7 @@ regenerateBtn.addEventListener('click', () => {
 function generateLottoNumbers(selectedNumbers, otherNumbers) {
 	let allNumbers = [];
 	let val = selectedNumbers.length;
-	let numberTime = val > 0 ? caseNumber(val) : 500;
+	let numberTime = val > 0 ? caseNumber(val) : 300;
 
 	for (let i = 0; i < numberTime; i++) {
 		let otherLottoNumbers = generateOtherLottoNumbers(otherNumbers);
@@ -310,16 +310,16 @@ function caseNumber(val) {
 	let resultLength = '';
 	switch (val) {
 		case 1:
-			resultLength = 800;
-			break;
-		case 2:
 			resultLength = 500;
 			break;
-		case 3:
+		case 2:
 			resultLength = 300;
 			break;
+		case 3:
+			resultLength = 200;
+			break;
 		case 4:
-			resultLength = 400;
+			resultLength = 100;
 			break;
 	}
 	return resultLength;
