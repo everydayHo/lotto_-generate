@@ -12,12 +12,14 @@ const selectballContainer = document.querySelector(
 const generateContainer = document.querySelector(
 	'.generate_container .wrapper'
 );
+
 const generateArea = document.querySelector('.generate_container .wrapper p');
 const generateBtn = document.querySelector('.generate_container .makebtn');
 const regenerateBtn = document.querySelector('.generate_container .refreshbtn');
 const loadingContainer = document.querySelector(
 	'.generate_container .loading-container'
 );
+
 // 팝업창 공 나오게 만듬
 function createItem(number) {
 	const itemrow = document.createElement('span');
@@ -222,7 +224,7 @@ regenerateBtn.addEventListener('click', () => {
 function generateLottoNumbers(selectedNumbers, otherNumbers) {
 	let allNumbers = [];
 	let val = selectedNumbers.length;
-	let numberTime = val > 0 ? caseNumber(val) : 1000;
+	let numberTime = val > 0 ? caseNumber(val) : 500;
 
 	for (let i = 0; i < numberTime; i++) {
 		let otherLottoNumbers = generateOtherLottoNumbers(otherNumbers);
@@ -308,13 +310,13 @@ function caseNumber(val) {
 	let resultLength = '';
 	switch (val) {
 		case 1:
-			resultLength = 2000;
+			resultLength = 800;
 			break;
 		case 2:
-			resultLength = 1500;
+			resultLength = 500;
 			break;
 		case 3:
-			resultLength = 1000;
+			resultLength = 300;
 			break;
 		case 4:
 			resultLength = 400;
