@@ -22,13 +22,14 @@ const changeHandler = (e) => {
       const numbers = result.data.map((data) => {
         return [...data.numbers, data.bonus_no, data.draw_no];
       });
-
       const resultNumbers = numbers.filter((number) => {
+        console.log(number);
         return filteringNumbers.every((condition) => {
           if (number[7] === condition) return;
-          return number.includes(condition);
+          else return number.includes(condition);
         });
       });
+      console.log(resultNumbers);
       if (resultNumbers.length <= 0) {
         Swal.fire({
           icon: 'error',
@@ -39,7 +40,7 @@ const changeHandler = (e) => {
           filterSection.innerHTML = '';
         });
       }
-      for (let i = 0; i < resultNumbers.length - 1; i++) {
+      for (let i = 0; i < resultNumbers.length; i++) {
         const item = document.createElement('p');
         item.setAttribute('class', 'filter_text');
         for (let j = 0; j < resultNumbers[0].length - 1; j++) {
