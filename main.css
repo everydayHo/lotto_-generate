@@ -355,6 +355,7 @@ section > div .btn {
   padding: 100px 100px 50px;
   text-align: center;
   position: relative;
+  margin: 0 auto;
 }
 .filter_section .filter_container h2 {
   position: absolute;
@@ -368,7 +369,7 @@ section > div .deletebtn {
   left: 400px;
 }
 #txt_num {
-  width: 400px;
+  width: 50%;
   height: 50px;
   padding: 10px;
   font-size: 15px;
@@ -383,20 +384,44 @@ section > div .deletebtn {
 }
 .bonus_num {
   position: absolute;
-  right: 390px;
   top: 80px;
   font-size: 18px;
-  font-weight: 700;
-  color: rgb(26, 26, 164);
+  font-weight: 500;
+  color: rgba(219, 37, 198, 0.7);
 }
 .filter_text {
   position: relative;
-  padding: 0 40px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
 }
-.round_num {
-  position: absolute;
-  left: 240px;
-  top: 23px;
+.filter_text > span:last-child {
+  order: 1;
+  line-height: 60px;
+}
+.filter_text > span:nth-child(1) {
+  order: 2;
+}
+.filter_text > span:nth-child(2) {
+  order: 3;
+}
+.filter_text > span:nth-child(3) {
+  order: 4;
+}
+.filter_text > span:nth-child(4) {
+  order: 5;
+}
+.filter_text > span:nth-child(5) {
+  order: 6;
+}
+.filter_text > span:nth-child(6) {
+  order: 7;
+}
+.filter_text > span:nth-child(7) {
+  order: 8;
 }
 
 /* Animations */

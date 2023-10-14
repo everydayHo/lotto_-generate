@@ -4,7 +4,6 @@ const deleteBtn = document.querySelector('.deletebtn');
 
 const changeHandler = (e) => {
   const inputValues = e.target.value.split(',');
-  console.log(inputValues);
   if (inputValues.length > 6) {
     Swal.fire({
       icon: 'error',
@@ -26,6 +25,7 @@ const changeHandler = (e) => {
 
       const resultNumbers = numbers.filter((number) => {
         return filteringNumbers.every((condition) => {
+          if (number[7] === condition) return;
           return number.includes(condition);
         });
       });
@@ -60,6 +60,17 @@ const changeHandler = (e) => {
       bonus_text.setAttribute('class', 'bonus_num');
       bonus_text.innerText = '보너스번호';
       filterSection.append(bonus_text);
+      const filterTextLastChildEl = document.querySelector(
+        '.filter_text > span:nth-child(7)'
+      );
+      const filterTextOffsetLeft =
+        document.querySelector('.filter_text').offsetLeft;
+      const lastElOffset =
+        filterTextLastChildEl.offsetWidth +
+        filterTextLastChildEl.offsetLeft +
+        filterTextOffsetLeft -
+        70;
+      bonus_text.style.left = lastElOffset + 'px';
     })
     .catch(function (error) {
       console.log('에러 발생: ', error);
@@ -94,3 +105,20 @@ function colorClass(ballNumber) {
   }
   return className;
 }
+
+// 화살표 위로 올라가기
+
+const arrow = document.querySelector('main .back_to_top');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 1000) {
+    arrow.classList.add('active');
+  } else {
+    arrow.classList.remove('active');
+  }
+});
+
+arrow.addEventListener('click', (e) => {
+  e.preventDefault();
+  document.body.scrollIntoView({ behavior: 'smooth' });
+});
