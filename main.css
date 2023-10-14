@@ -401,6 +401,7 @@ section > div .deletebtn {
 .filter_text > span:last-child {
   order: 1;
   line-height: 60px;
+  width: 100px;
 }
 .filter_text > span:nth-child(1) {
   order: 2;
