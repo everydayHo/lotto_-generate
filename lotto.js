@@ -56,10 +56,13 @@ const changeHandler = (e) => {
         item.append(roundText);
         filterSection.append(item);
       }
-      const bonus_text = document.createElement('p');
-      bonus_text.setAttribute('class', 'bonus_num');
-      bonus_text.innerText = '보너스번호';
-      filterSection.append(bonus_text);
+      const bonusText = document.createElement('p');
+      bonusText.setAttribute('class', 'bonus_num');
+      bonusText.innerText = '보너스번호';
+      filterSection.append(bonusText);
+      const titleText = document.createElement('h2');
+      titleText.innerText = '결과번호';
+      filterSection.append(titleText);
       const filterTextLastChildEl = document.querySelector(
         '.filter_text > span:nth-child(7)'
       );
@@ -70,7 +73,7 @@ const changeHandler = (e) => {
         filterTextLastChildEl.offsetLeft +
         filterTextOffsetLeft -
         70;
-      bonus_text.style.left = lastElOffset + 'px';
+      bonusText.style.left = lastElOffset + 'px';
     })
     .catch(function (error) {
       console.log('에러 발생: ', error);
