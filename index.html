@@ -1,192 +1,193 @@
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="hoitlottogenerater" />
-		<meta property="og:title" content="hoitlottogenerater" />
-		<meta
-			property="og:description"
-			content="고정수,선택수를 정하여 로또를 생성하는 사이트입니다."
-		/>
-		<meta property="og:image" content="./image/img_seo.png" />
-		<meta property="og:url" content="https://hoitlotto.netlify.app/" />
-		<meta property="twitter:card" content="summary" />
-		<meta property="twitter:site" content="hoitlotto" />
-		<meta property="twitter:title" content="hoitlotto" />
-		<meta
-			property="twitter:description"
-			content="고정수,선택수를 정하여 로또를 생성하는 사이트입니다."
-		/>
-		<meta property="twitter:image" content="./image/img_seo.png" />
-		<meta property="twitter:url" content="https://hoitlotto.netlify.app/" />
-		<link rel="icon" href="./image/favicon.ico" />
-		<title>호잇로또</title>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css"
-		/>
-		<link rel="stylesheet" href="./main.css" />
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
-		<script defer src="./app.js"></script>
-	</head>
-	<body>
-		<header>
-			<h1>로또조합기</h1>
-			<div class="custom-shape-divider-top-1681472748">
-				<svg
-					data-name="Layer 1"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 1200 120"
-					preserveAspectRatio="none"
-				>
-					<path
-						d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-						opacity=".25"
-						class="shape-fill"
-					></path>
-					<path
-						d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-						opacity=".5"
-						class="shape-fill"
-					></path>
-					<path
-						d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-						class="shape-fill"
-					></path>
-				</svg>
-			</div>
-		</header>
-		<main>
-			<section>
-				<div class="fixball_container">
-					<h2>고정수</h2>
-					<div class="fixball wrapper"></div>
-					<button class="btn">지정</button>
-				</div>
-				<div class="choice_container">
-					<h2>선택수</h2>
-					<div class="outball wrapper"></div>
-					<button class="btn">지정</button>
-				</div>
-				<div class="generate_container">
-					<h2>행운수</h2>
-					<div class="luckyball wrapper"></div>
-					<div class="loading-container">
-						<svg
-							class="sp"
-							viewBox="0 0 128 128"
-							width="128px"
-							height="128px"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<defs>
-								<lineargradient id="grad1" x1="0" y1="0" x2="0" y2="1">
-									<stop offset="0%" stop-color="#000" />
-									<stop offset="40%" stop-color="#fff" />
-									<stop offset="100%" stop-color="#fff" />
-								</lineargradient>
-								<lineagradient id="grad2" x1="0" y1="0" x2="0" y2="1">
-									<stop offset="0%" stop-color="#000" />
-									<stop offset="60%" stop-color="#000" />
-									<stop offset="100%" stop-color="#fff" />
-								</lineagradient>
-								<mask id="mask1">
-									<rect
-										x="0"
-										y="0"
-										width="128"
-										height="128"
-										fill="url(#grad1)"
-									/>
-								</mask>
-								<mask id="mask2">
-									<rect
-										x="0"
-										y="0"
-										width="128"
-										height="128"
-										fill="url(#grad2)"
-									/>
-								</mask>
-							</defs>
-							<g fill="none" stroke-linecap="round" stroke-width="16">
-								<circle class="sp__ring" r="56" cx="64" cy="64" stroke="#ddd" />
-								<g stroke="hsl(223,90%,50%)">
-									<path
-										class="sp__worm1"
-										d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
-										stroke="hsl(343,90%,50%)"
-										stroke-dasharray="43.98 307.87"
-									/>
-									<g transform="translate(42,42)">
-										<g class="sp__worm2" transform="translate(-42,0)">
-											<path
-												class="sp__worm2-1"
-												d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
-												stroke-dasharray="43.98 175.92"
-											/>
-										</g>
-									</g>
-								</g>
-								<g stroke="hsl(283,90%,50%)" mask="url(#mask1)">
-									<path
-										class="sp__worm1"
-										d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
-										stroke-dasharray="43.98 307.87"
-									/>
-									<g transform="translate(42,42)">
-										<g class="sp__worm2" transform="translate(-42,0)">
-											<path
-												class="sp__worm2-1"
-												d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
-												stroke-dasharray="43.98 175.92"
-											/>
-										</g>
-									</g>
-								</g>
-								<g stroke="hsl(343,90%,50%)" mask="url(#mask2)">
-									<path
-										class="sp__worm1"
-										d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
-										stroke-dasharray="43.98 307.87"
-									/>
-									<g transform="translate(42,42)">
-										<g class="sp__worm2" transform="translate(-42,0)">
-											<path
-												class="sp__worm2-1"
-												d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
-												stroke-dasharray="43.98 175.92"
-											/>
-										</g>
-									</g>
-								</g>
-							</g>
-						</svg>
-					</div>
-					<button class="btn makebtn">조합하기</button>
-					<button class="refreshbtn">초기화</button>
-				</div>
-			</section>
-			<div class="overlay">
-				<div class="inner">
-					<h2>조합수 선택</h2>
-					<div class="wrapper"></div>
-					<button class="close">
-						<i class="fa-regular fa-circle-xmark"></i>
-					</button>
-					<button class="btn">완료</button>
-				</div>
-			</div>
-			<a href="#" class="back_to_top">
-				<span class="sprite big_arrow_up">arrow up</span>
-			</a>
-		</main>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="hoitlottogenerater" />
+    <meta property="og:title" content="hoitlottogenerater" />
+    <meta
+      property="og:description"
+      content="고정수,선택수를 정하여 로또를 생성하는 사이트입니다."
+    />
+    <meta property="og:image" content="./image/img_seo.png" />
+    <meta property="og:url" content="https://hoitlotto.netlify.app/" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="hoitlotto" />
+    <meta property="twitter:title" content="hoitlotto" />
+    <meta
+      property="twitter:description"
+      content="고정수,선택수를 정하여 로또를 생성하는 사이트입니다."
+    />
+    <meta property="twitter:image" content="./image/img_seo.png" />
+    <meta property="twitter:url" content="https://hoitlotto.netlify.app/" />
+    <link rel="icon" href="./image/favicon.ico" />
+    <title>호잇로또</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="./main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>로또조합기</h1>
+      <div class="custom-shape-divider-top-1681472748">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+      <a href="./lotto_number.html" class="link_btn">동반출현번호</a>
+    </header>
+    <main>
+      <section>
+        <div class="fixball_container">
+          <h2>고정수</h2>
+          <div class="fixball wrapper"></div>
+          <button class="btn">지정</button>
+        </div>
+        <div class="choice_container">
+          <h2>선택수</h2>
+          <div class="outball wrapper"></div>
+          <button class="btn">지정</button>
+        </div>
+        <div class="generate_container">
+          <h2>행운수</h2>
+          <div class="luckyball wrapper"></div>
+          <div class="loading-container">
+            <svg
+              class="sp"
+              viewBox="0 0 128 128"
+              width="128px"
+              height="128px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <lineargradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#000" />
+                  <stop offset="40%" stop-color="#fff" />
+                  <stop offset="100%" stop-color="#fff" />
+                </lineargradient>
+                <lineagradient id="grad2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#000" />
+                  <stop offset="60%" stop-color="#000" />
+                  <stop offset="100%" stop-color="#fff" />
+                </lineagradient>
+                <mask id="mask1">
+                  <rect
+                    x="0"
+                    y="0"
+                    width="128"
+                    height="128"
+                    fill="url(#grad1)"
+                  />
+                </mask>
+                <mask id="mask2">
+                  <rect
+                    x="0"
+                    y="0"
+                    width="128"
+                    height="128"
+                    fill="url(#grad2)"
+                  />
+                </mask>
+              </defs>
+              <g fill="none" stroke-linecap="round" stroke-width="16">
+                <circle class="sp__ring" r="56" cx="64" cy="64" stroke="#ddd" />
+                <g stroke="hsl(223,90%,50%)">
+                  <path
+                    class="sp__worm1"
+                    d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
+                    stroke="hsl(343,90%,50%)"
+                    stroke-dasharray="43.98 307.87"
+                  />
+                  <g transform="translate(42,42)">
+                    <g class="sp__worm2" transform="translate(-42,0)">
+                      <path
+                        class="sp__worm2-1"
+                        d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
+                        stroke-dasharray="43.98 175.92"
+                      />
+                    </g>
+                  </g>
+                </g>
+                <g stroke="hsl(283,90%,50%)" mask="url(#mask1)">
+                  <path
+                    class="sp__worm1"
+                    d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
+                    stroke-dasharray="43.98 307.87"
+                  />
+                  <g transform="translate(42,42)">
+                    <g class="sp__worm2" transform="translate(-42,0)">
+                      <path
+                        class="sp__worm2-1"
+                        d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
+                        stroke-dasharray="43.98 175.92"
+                      />
+                    </g>
+                  </g>
+                </g>
+                <g stroke="hsl(343,90%,50%)" mask="url(#mask2)">
+                  <path
+                    class="sp__worm1"
+                    d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64"
+                    stroke-dasharray="43.98 307.87"
+                  />
+                  <g transform="translate(42,42)">
+                    <g class="sp__worm2" transform="translate(-42,0)">
+                      <path
+                        class="sp__worm2-1"
+                        d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14"
+                        stroke-dasharray="43.98 175.92"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <button class="btn makebtn">조합하기</button>
+          <button class="refreshbtn">초기화</button>
+        </div>
+      </section>
+      <div class="overlay">
+        <div class="inner">
+          <h2>조합수 선택</h2>
+          <div class="wrapper"></div>
+          <button class="close">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+          <button class="btn">완료</button>
+        </div>
+      </div>
+      <a href="#" class="back_to_top">
+        <span class="sprite big_arrow_up">arrow up</span>
+      </a>
+    </main>
+  </body>
 </html>
