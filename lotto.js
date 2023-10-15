@@ -48,7 +48,6 @@ const changeHandler = (e) => {
           itemNumText.innerText = resultNumbers[i][j];
           console.log(filteringNumbers.length);
           for (let k = 0; k < filteringNumbers.length; k++) {
-            console.log(k);
             if (resultNumbers[i][j] === filteringNumbers[k]) {
               Object.assign(itemNumText.style, {
                 borderTopWidth: '3px',
