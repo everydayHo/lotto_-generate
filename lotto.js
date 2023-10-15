@@ -44,9 +44,7 @@ const changeHandler = (e) => {
         for (let j = 0; j < resultNumbers[0].length - 1; j++) {
           const itemNumText = document.createElement('span');
           itemNumText.setAttribute('class', 'ball');
-
           itemNumText.innerText = resultNumbers[i][j];
-          console.log(filteringNumbers.length);
           for (let k = 0; k < filteringNumbers.length; k++) {
             if (resultNumbers[i][j] === filteringNumbers[k]) {
               Object.assign(itemNumText.style, {
