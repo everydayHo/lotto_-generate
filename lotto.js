@@ -23,13 +23,11 @@ const changeHandler = (e) => {
         return [...data.numbers, data.bonus_no, data.draw_no];
       });
       const resultNumbers = numbers.filter((number) => {
-        console.log(number);
         return filteringNumbers.every((condition) => {
           if (number[7] === condition) return;
           else return number.includes(condition);
         });
       });
-      console.log(resultNumbers);
       if (resultNumbers.length <= 0) {
         Swal.fire({
           icon: 'error',
@@ -46,7 +44,20 @@ const changeHandler = (e) => {
         for (let j = 0; j < resultNumbers[0].length - 1; j++) {
           const itemNumText = document.createElement('span');
           itemNumText.setAttribute('class', 'ball');
+
           itemNumText.innerText = resultNumbers[i][j];
+          console.log(filteringNumbers.length);
+          for (let k = 0; k < filteringNumbers.length; k++) {
+            console.log(k);
+            if (resultNumbers[i][j] === filteringNumbers[k]) {
+              Object.assign(itemNumText.style, {
+                borderTopWidth: '3px',
+                borderRightWidth: '3px',
+                borderBottomWidth: '3px',
+                borderLeftWidth: '3px',
+              });
+            }
+          }
           itemNumText.classList.add(colorClass(itemNumText.innerText));
           item.append(itemNumText);
         }
