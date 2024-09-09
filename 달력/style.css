@@ -1,0 +1,55 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+#calendar {
+	width: 500px;
+	height: 100%;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+.claendar_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.claendar_header button {
+	outline: none;
+	border: none;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: transparent;
+}
+th,
+td {
+	padding: 15px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+td {
+	cursor: pointer;
+}
+
+td:hover {
+	background-color: #777777;
+}
+
+.today {
+	background: #e46464;
+	border-radius: 50%;
+}
