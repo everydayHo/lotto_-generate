@@ -639,11 +639,11 @@ main .back_to_top.active {
 		line-height: 36px;
 	}
 	.generate_container::before {
-		height: 120px;
+		height: 60px;
 	}
 	.generate_container h2 {
 		text-align: center;
-		font-size: 24px;
+		font-size: 20px;
 		font-weight: 700;
 		line-height: 1.6;
 	}
