@@ -18,6 +18,7 @@ body {
 		'Segoe UI Symbol', sans-serif;
 	color: #333333;
 	background: #fbf9f0;
+	overflow-x: hidden;
 }
 
 button {
@@ -29,6 +30,9 @@ button {
 }
 button:focus {
 	color: #333333;
+}
+header {
+	position: relative;
 }
 header h1 {
 	width: 100%;
@@ -61,13 +65,21 @@ header h1 {
 .custom-shape-divider-top-1681472748 .shape-fill {
 	fill: #f3e7e9;
 }
+.link_wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	margin: 0 auto;
+	position: absolute;
+	right: 100px;
+	top: 30px;
+	transform: translateX(-50%);
+}
 .link_btn {
 	text-decoration: none;
 	color: rgb(70, 130, 180);
 	font-size: 20px;
-	position: absolute;
-	right: 100px;
-	top: 30px;
 	transition: 300ms;
 }
 .link_btn:hover {
@@ -545,11 +557,12 @@ main .back_to_top.active {
 }
 
 @media screen and (min-width: 410px) and (max-width: 480px) {
-	.link_btn {
+	.link_wrap {
 		left: 50%;
 		top: 70px;
+	}
+	.link_btn {
 		white-space: nowrap;
-		transform: translateX(50%);
 	}
 	.overlay .inner {
 		width: 90%;
@@ -607,7 +620,9 @@ main .back_to_top.active {
 		font-size: 11px;
 		line-height: 36px;
 	}
-
+	.filter_text {
+		gap: 5px;
+	}
 	.generate_container .wrapper p .ball,
 	.filter_section .filter_container p .ball {
 		width: 36px;
@@ -653,11 +668,9 @@ main .back_to_top.active {
 	}
 }
 @media screen and (max-width: 410px) {
-	.link_btn {
+	.link_wrap {
 		left: 50%;
 		top: 70px;
-		white-space: nowrap;
-		transform: translateX(-50%);
 	}
 	.overlay .inner {
 		width: 90%;
