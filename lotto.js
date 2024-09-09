@@ -116,17 +116,17 @@ function colorClass(ballNumber) {
 
 // 화살표 위로 올라가기
 
-// const arrow = document.querySelector('main .back_to_top');
+const arrow = document.querySelector('main .back_to_top');
 
-// window.addEventListener('scroll', () => {
-// 	if (window.scrollY > 1000) {
-// 		arrow.classList.add('active');
-// 	} else {
-// 		arrow.classList.remove('active');
-// 	}
-// });
+window.addEventListener('scroll', () => {
+	if (window.scrollY > 1000) {
+		arrow.classList.add('active');
+	} else {
+		arrow.classList.remove('active');
+	}
+});
 
-// arrow.addEventListener('click', (e) => {
-// 	e.preventDefault();
-// 	document.body.scrollIntoView({ behavior: 'smooth' });
-// });
+arrow.addEventListener('click', (e) => {
+	e.preventDefault();
+	document.body.scrollIntoView({ behavior: 'smooth' });
+});

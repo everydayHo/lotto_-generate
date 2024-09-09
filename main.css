@@ -89,6 +89,7 @@ header h1 {
 main {
 	position: relative;
 	margin: 0 auto;
+	padding: 20px 10px;
 }
 section {
 	display: flex;
@@ -97,7 +98,7 @@ section {
 	align-items: center;
 }
 section > div {
-	width: 90%;
+	width: 100%;
 	border: 1px solid #333333;
 	border-radius: 15px;
 	margin-bottom: 30px;
@@ -357,7 +358,6 @@ section > div .btn {
 	text-align: center;
 	position: relative;
 	margin: 0 auto;
-	overflow-x: hidden;
 }
 .filter_section h2 {
 	position: absolute;
@@ -512,7 +512,7 @@ main .back_to_top {
 	position: fixed;
 	width: 36px;
 	height: 89px;
-	right: 10px;
+	right: 15px;
 	bottom: 10px;
 	border-radius: 18px;
 	background: #ffba00;
