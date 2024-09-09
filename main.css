@@ -549,7 +549,7 @@ main .back_to_top.active {
 		left: 50%;
 		top: 70px;
 		white-space: nowrap;
-		transform: translateX(-84%);
+		transform: translateX(50%);
 	}
 	.overlay .inner {
 		width: 90%;
@@ -657,7 +657,7 @@ main .back_to_top.active {
 		left: 50%;
 		top: 70px;
 		white-space: nowrap;
-		transform: translateX(-84%);
+		transform: translateX(-50%);
 	}
 	.overlay .inner {
 		width: 90%;
