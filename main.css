@@ -643,7 +643,7 @@ main .back_to_top.active {
 	}
 	.generate_container h2 {
 		text-align: center;
-		font-size: 20px;
+		font-size: 17px;
 		font-weight: 700;
 		line-height: 1.6;
 	}
@@ -753,11 +753,11 @@ main .back_to_top.active {
 		line-height: 34px;
 	}
 	.generate_container::before {
-		height: 120px;
+		height: 60px;
 	}
 	.generate_container h2 {
 		text-align: center;
-		font-size: 24px;
+		font-size: 14px;
 		font-weight: 700;
 		line-height: 1.6;
 	}
