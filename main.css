@@ -626,11 +626,11 @@ main .back_to_top.active {
 	}
 	.generate_container .wrapper p .ball,
 	.filter_section .filter_container p .ball {
-		width: 36px;
-		height: 36px;
-		line-height: 36px;
+		width: 32px;
+		height: 32px;
+		line-height: 32px;
 		margin-left: 4px;
-		flex: 1 0 36px;
+		flex: 1 0 32px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
