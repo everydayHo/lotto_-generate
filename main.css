@@ -68,7 +68,7 @@ header h1 {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 10px;
+	gap: 15px;
 	margin: 0 auto;
 	position: absolute;
 	right: 100px;
@@ -561,6 +561,7 @@ main .back_to_top.active {
 	.link_wrap {
 		left: 50%;
 		top: 70px;
+		right: unset;
 	}
 	.link_btn {
 		white-space: nowrap;
@@ -675,6 +676,7 @@ main .back_to_top.active {
 	.link_wrap {
 		left: 50%;
 		top: 70px;
+		right: unset;
 	}
 	.overlay .inner {
 		width: 90%;
