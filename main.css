@@ -670,6 +670,9 @@ main .back_to_top.active {
 	.generate_container.filter_sec > div .btn {
 		flex: 1;
 	}
+	.filter_section .filter_container {
+		padding: 100px 0 20px 0;
+	}
 }
 @media screen and (max-width: 410px) {
 	.link_wrap {
@@ -721,6 +724,9 @@ main .back_to_top.active {
 	}
 	.generate_container {
 		padding: 20px 0 20px 0;
+	}
+	.filter_section .filter_container {
+		padding: 100px 0 20px 0;
 	}
 	.generate_container .wrapper {
 		padding: 100px 0 30px 0;
