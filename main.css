@@ -358,6 +358,7 @@ section > div .btn {
 	text-align: center;
 	position: relative;
 	margin: 0 auto;
+	overflow-x: hidden;
 }
 .filter_section h2 {
 	position: absolute;
