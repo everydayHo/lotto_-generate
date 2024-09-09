@@ -80,6 +80,7 @@ header h1 {
 	text-decoration: none;
 	color: rgb(70, 130, 180);
 	font-size: 20px;
+	white-space: nowrap;
 	transition: 300ms;
 }
 .link_btn:hover {
