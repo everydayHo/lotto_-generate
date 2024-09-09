@@ -374,7 +374,7 @@ section > div .deletebtn {
 	width: 50%;
 	height: 50px;
 	padding: 10px;
-	font-size: 15px;
+	font-size: 18px;
 	z-index: 9999;
 	display: block;
 }
@@ -665,10 +665,7 @@ main .back_to_top.active {
 		flex-direction: column;
 	}
 	.generate_container.filter_sec > div #txt_num {
-		flex: 1;
-	}
-	.generate_container.filter_sec > div .btn {
-		flex: 1;
+		width: 100%;
 	}
 	.filter_section .filter_container {
 		padding: 100px 0 20px 0;
