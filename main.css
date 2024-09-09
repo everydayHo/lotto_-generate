@@ -622,7 +622,7 @@ main .back_to_top.active {
 		line-height: 36px;
 	}
 	.filter_text {
-		gap: 5px;
+		gap: 4px;
 	}
 	.generate_container .wrapper p .ball,
 	.filter_section .filter_container p .ball {
@@ -631,6 +631,9 @@ main .back_to_top.active {
 		line-height: 36px;
 		margin-left: 4px;
 		flex: 1 0 36px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.generate_container .wrapper p .oddnum {
 		line-height: 36px;
@@ -733,7 +736,7 @@ main .back_to_top.active {
 		line-height: 34px;
 	}
 	.filter_text {
-		gap: 5px;
+		gap: 3px;
 	}
 	.generate_container .wrapper p .ball,
 	.filter_section .filter_container p .ball {
