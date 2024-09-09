@@ -108,7 +108,8 @@ section > div::before {
 	z-index: 1;
 	border-radius: 15px 15px 0 0;
 }
-section > div h2 {
+section > div h2,
+.filter_section h2 {
 	position: relative;
 	font-size: 20px;
 	font-weight: 500;
@@ -138,6 +139,7 @@ section > div .btn {
 	background: #fb81d2;
 	transition: 300ms;
 	z-index: 100;
+	white-space: nowrap;
 }
 .btn:hover {
 	background: #e13daa;
@@ -335,15 +337,18 @@ section > div .btn {
 }
 /* lotto */
 
+.filter_section {
+	position: relative;
+}
 .filter_section .filter_container {
 	padding: 100px 100px 50px;
 	text-align: center;
 	position: relative;
 	margin: 0 auto;
 }
-.filter_section .filter_container h2 {
+.filter_section h2 {
 	position: absolute;
-	left: 30px;
+	left: 8%;
 	top: 20px;
 }
 .filter_section .filter_container p {
@@ -357,7 +362,6 @@ section > div .deletebtn {
 	height: 50px;
 	padding: 10px;
 	font-size: 15px;
-	margin-top: 50px;
 	z-index: 9999;
 	display: block;
 }
@@ -372,6 +376,7 @@ section > div .deletebtn {
 	font-size: 18px;
 	font-weight: 500;
 	color: rgba(219, 37, 198, 0.7);
+	white-space: nowrap;
 }
 .filter_text {
 	position: relative;
@@ -386,6 +391,7 @@ section > div .deletebtn {
 	order: 1;
 	line-height: 60px;
 	width: 100px;
+	white-space: nowrap;
 }
 .filter_text > span:nth-child(1) {
 	order: 2;
@@ -526,8 +532,25 @@ main .back_to_top.active {
 	visibility: visible;
 	opacity: 1;
 }
+.generate_container.filter_sec > div {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding-top: 50px;
+}
+.generate_container.filter_sec .btn {
+	position: relative;
+	left: unset;
+	top: 0;
+}
 
 @media screen and (min-width: 410px) and (max-width: 480px) {
+	.link_btn {
+		left: 50%;
+		top: 70px;
+		white-space: nowrap;
+		transform: translateX(-84%);
+	}
 	.overlay .inner {
 		width: 90%;
 		padding: 30px 10px 30px 10px;
@@ -578,17 +601,20 @@ main .back_to_top.active {
 		justify-content: center;
 		align-items: center;
 	}
-	.generate_container .wrapper p {
+	.generate_container .wrapper p,
+	.filter_section .filter_container p {
 		display: flex;
 		font-size: 11px;
 		line-height: 36px;
 	}
 
-	.generate_container .wrapper p .ball {
+	.generate_container .wrapper p .ball,
+	.filter_section .filter_container p .ball {
 		width: 36px;
 		height: 36px;
 		line-height: 36px;
 		margin-left: 4px;
+		flex: 1 0 36px;
 	}
 	.generate_container .wrapper p .oddnum {
 		line-height: 36px;
@@ -600,10 +626,15 @@ main .back_to_top.active {
 		text-align: center;
 		font-size: 24px;
 		font-weight: 700;
+		line-height: 1.6;
 	}
 	.generate_container .makebtn {
 		top: 65px;
 		left: 20px;
+	}
+	.generate_container.filter_sec .makebtn {
+		top: unset;
+		left: unset;
 	}
 	.generate_container .refreshbtn {
 		top: 65px;
@@ -611,8 +642,23 @@ main .back_to_top.active {
 		width: 142px;
 		height: 42px;
 	}
+	.generate_container.filter_sec > div {
+		flex-direction: column;
+	}
+	.generate_container.filter_sec > div #txt_num {
+		flex: 1;
+	}
+	.generate_container.filter_sec > div .btn {
+		flex: 1;
+	}
 }
 @media screen and (max-width: 410px) {
+	.link_btn {
+		left: 50%;
+		top: 70px;
+		white-space: nowrap;
+		transform: translateX(-84%);
+	}
 	.overlay .inner {
 		width: 90%;
 		padding: 30px 10px 30px 10px;
@@ -665,18 +711,26 @@ main .back_to_top.active {
 		justify-content: center;
 		align-items: center;
 	}
-	.generate_container .wrapper p {
+	.generate_container .wrapper p,
+	.filter_section .filter_container p {
 		display: flex;
 		flex-wrap: nowrap;
 		font-size: 12px;
 		line-height: 34px;
 	}
-
-	.generate_container .wrapper p .ball {
-		width: 34px;
-		height: 34px;
-		line-height: 34px;
+	.filter_text {
+		gap: 5px;
+	}
+	.generate_container .wrapper p .ball,
+	.filter_section .filter_container p .ball {
+		width: 28px;
+		height: 28px;
+		line-height: 30px;
 		margin-left: 4px;
+		flex: 1 0 28px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.generate_container .wrapper p .oddnum {
 		line-height: 34px;
@@ -688,15 +742,33 @@ main .back_to_top.active {
 		text-align: center;
 		font-size: 24px;
 		font-weight: 700;
+		line-height: 1.6;
 	}
 	.generate_container .makebtn {
 		top: 65px;
 		left: 20px;
+	}
+	.generate_container.filter_sec .makebtn {
+		top: unset;
+		left: unset;
 	}
 	.generate_container .refreshbtn {
 		top: 65px;
 		right: 20px;
 		width: 142px;
 		height: 42px;
+	}
+	.generate_container.filter_sec > div {
+		flex-direction: column;
+	}
+	.generate_container.filter_sec > div #txt_num {
+		flex: 1;
+	}
+	.generate_container.filter_sec > div .btn {
+		flex: 1;
+	}
+
+	.generate_container .btn_wrap button {
+		flex: 1;
 	}
 }

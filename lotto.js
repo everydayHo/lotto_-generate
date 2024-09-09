@@ -1,4 +1,5 @@
 const textEl = document.querySelector('#txt_num');
+const confirmBtn = document.querySelector('.makebtn');
 const filterSection = document.querySelector('.filter_section div');
 const deleteBtn = document.querySelector('.deletebtn');
 
@@ -69,12 +70,14 @@ const changeHandler = (e) => {
 			bonusText.setAttribute('class', 'bonus_num');
 			bonusText.innerText = '보너스번호';
 			filterSection.append(bonusText);
-			const titleText = document.createElement('h2');
-			titleText.innerText = '결과번호';
-			filterSection.append(titleText);
+			const filterTex = document.querySelector('.filter_text');
 			const filterTextLastChildEl = document.querySelector('.filter_text > span:nth-child(7)');
 			const filterTextOffsetLeft = document.querySelector('.filter_text').offsetLeft;
-			const lastElOffset = filterTextLastChildEl.offsetWidth + filterTextLastChildEl.offsetLeft + filterTextOffsetLeft - 70;
+			let lastElOffset;
+			const winMatch = window.matchMedia('(min-width: 480px)');
+			winMatch.matches
+				? (lastElOffset = filterTextLastChildEl.offsetWidth + filterTextLastChildEl.offsetLeft + filterTextOffsetLeft - 70)
+				: (lastElOffset = filterTextLastChildEl.offsetWidth + filterTextLastChildEl.offsetLeft + filterTextOffsetLeft - 40);
 			bonusText.style.left = lastElOffset + 'px';
 		})
 		.catch(function (error) {
