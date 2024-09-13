@@ -557,7 +557,7 @@ main .back_to_top.active {
 	top: 0;
 }
 
-@media screen and (min-width: 410px) and (max-width: 480px) {
+@media screen and (min-width: 410px) and (max-width: 800px) {
 	.link_wrap {
 		left: 50%;
 		top: 70px;
@@ -739,20 +739,31 @@ main .back_to_top.active {
 		flex-wrap: nowrap;
 		font-size: 12px;
 		line-height: 34px;
+		width: 95%;
+	}
+	.filter_section .filter_container p {
+		width: 80%;
 	}
 	.filter_text {
 		gap: 3px;
 	}
 	.generate_container .wrapper p .ball,
 	.filter_section .filter_container p .ball {
-		width: 34px;
+		width: 12.5%;
 		height: 34px;
 		line-height: 34px;
 		margin-left: 4px;
-		flex: 1 0 34px;
+		flex: 1 0 12.5%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	.generate_container .wrapper p > span {
+		white-space: nowrap;
+	}
+	.generate_container .wrapper p .ball {
+		width: 10%;
+		flex: 1 0 10%;
 	}
 	.generate_container .wrapper p .oddnum {
 		line-height: 34px;

@@ -77,7 +77,7 @@ const changeHandler = (e) => {
 			const winMatch = window.matchMedia('(min-width: 480px)');
 			winMatch.matches
 				? (lastElOffset = filterTextLastChildEl.offsetWidth + filterTextLastChildEl.offsetLeft + filterTextOffsetLeft - 70)
-				: (lastElOffset = filterTextLastChildEl.offsetWidth + filterTextLastChildEl.offsetLeft + filterTextOffsetLeft - 40);
+				: (lastElOffset = filterTextLastChildEl.offsetWidth + filterTextLastChildEl.offsetLeft + filterTextOffsetLeft - 45);
 			bonusText.style.left = lastElOffset + 'px';
 		})
 		.catch(function (error) {
